@@ -5,11 +5,11 @@ pipeline {
   }
   stages {
     stage('Build') {
+      agent any
+      environment {
+        LOG_LEVEL='INFO'
+      }
       steps {
-        agent any
-        environment {
-          LOG_LEVEL='INFO'
-        }
         steps {
           echo "Building release ${RELEASE} with log level ${LOG_LEVEL}"
         }
