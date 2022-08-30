@@ -45,5 +45,6 @@ String getVersionSuffic() {
 void auditTools() {
   sh '''
     git version
+    env
   '''
 }
