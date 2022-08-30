@@ -21,7 +21,7 @@ pipeline {
         echo "Building version: ${VERSION} with suffix: ${VERSION_SUFFIX}"
       }
     }
-    stages('Public') {
+    stage('Public') {
       steps {
         sh 'cat /etc/os-release > public.txt'
       }
