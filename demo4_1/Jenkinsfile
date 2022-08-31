@@ -1,12 +1,19 @@
 pipeline {
-  agent {
-    docker { image 'node:16-alpine' }
-  }
-  stages {
-    stage('Verify') {
-      steps {
-        sh 'node --version'
+    agent {
+        docker {
+            image 'mcr.microsoft.com/dotnet/core/sdk:3.1.101'
+        }
+    }
+    stages {
+      stage('Verify') {
+          steps {
+              sh '''
+                dotnet --list-sdks
+                dotnet --list-runtimes
+              '''
+              sh 'printenv'
+              sh 'ls -l "$WORKSPACE"'
+          }
       }
     }
-  }
 }
